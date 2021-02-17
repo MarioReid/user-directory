@@ -33,12 +33,16 @@ class Employees extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
+                {this.state.employees.map((employees)=>{
+                  return(<tr>
+                    <td><img src={employees.picture.thumbnail} alt=""/></td>
+                    <td>{employees.name.first} {employees.name.last}</td>
+                    <td>{employees.phone}</td>
+                    <td>{employees.email}</td>
+                    <td>{employees.dob.date}</td>
+                  </tr>)
+                })}
+                
               </tbody>
             </table>
           </div>
