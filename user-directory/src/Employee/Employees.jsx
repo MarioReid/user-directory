@@ -18,7 +18,7 @@ class Employees extends Component {
       });
   }
 
-  handleClick() {
+  handleClick = () => {
     // sort by name
     const sortedArray = this.state.employees.sort(function (a, b) {
       var nameA = a.name.toUpperCase(); // ignore upper and lowercase
