@@ -5,7 +5,13 @@
 ## Description
 [User Directory](https://github.com/MarioReid/user-directory) was created to give users For this assignment, you'll create a employee directory with React. This assignment will require you to break up your application's UI into components, manage component state, and respond to user events.
 
+User Directory
+## Screenshots
+![Screenshot 1](1.png) 
+![Screenshot 2](2.png)
+![Screenshot 3](3.png)
 ## Table of Contents
+* [Screenshots](#screenshots)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Credits](#credits)
