@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { Component } from "react";
+import Input from '../Input/Input';
 import "./Employee.css";
 class Employees extends Component {
   state = {
     employees: [],
   };
-
+//API
   componentDidMount() {
     axios
       .get("https://randomuser.me/api/?results=10")
@@ -21,12 +22,12 @@ class Employees extends Component {
   handleClick = () => {
     // sort by name
     const sortedArray = this.state.employees.sort(function (a, b) {
-      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.name.last.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.last.toUpperCase(); // ignore upper and lowercase
       if (nameA < nameB) {
         return -1;
       }
-      if (nameA > nameB) {
+      else if (nameA > nameB) {
         return 1;
       }
 
@@ -35,11 +36,21 @@ class Employees extends Component {
     });
      this.setState({employees: sortedArray})
     console.log(sortedArray);
-  
+  }
+
+
+  handleChange = (event)=>{
+    const input = event.target.value;
+    
+    const filteredName = this.state.employees.filter(employee => employee.name.first.includes(input));
+
+    console.log(filteredName);
   }
 
   render() {
     return (
+      <>
+      <Input handleChange={this.handleChange}/>
       <div className="container">
         <div className="row">
           <div className="col">
@@ -78,6 +89,7 @@ class Employees extends Component {
           </div>
         </div>
       </div>
+      </>
     );
   }
 }
