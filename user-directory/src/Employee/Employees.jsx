@@ -5,6 +5,7 @@ import "./Employee.css";
 class Employees extends Component {
   state = {
     employees: [],
+    displayedEmployees: []
   };
 //API
   componentDidMount() {
@@ -12,7 +13,10 @@ class Employees extends Component {
       .get("https://randomuser.me/api/?results=10")
       .then((result) => {
         console.log(result);
-        this.setState({employees: result.data.results});
+        this.setState({
+          employees: result.data.results,
+          displayedEmployees: result.data.results
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +38,7 @@ class Employees extends Component {
       // names must be equal
       return 0;
     });
-     this.setState({employees: sortedArray})
+     this.setState({displayedEmployees: sortedArray})
     console.log(sortedArray);
   }
 
@@ -43,7 +47,7 @@ class Employees extends Component {
     const input = event.target.value;
     
     const filteredName = this.state.employees.filter(employee => employee.name.first.toLowerCase().includes(input.toLowerCase()));
-    this.setState({employees: filteredName});
+    this.setState({displayedEmployees: filteredName});
 
 
 
@@ -73,7 +77,7 @@ class Employees extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.employees.map((employees) => {
+                {this.state.displayedEmployees.map((employees) => {
                   return (
                     <tr>
                       <td>
