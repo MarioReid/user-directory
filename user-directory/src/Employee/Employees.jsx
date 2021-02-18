@@ -42,9 +42,12 @@ class Employees extends Component {
   handleChange = (event)=>{
     const input = event.target.value;
     
-    const filteredName = this.state.employees.filter(employee => employee.name.first.includes(input));
+    const filteredName = this.state.employees.filter(employee => employee.name.first.toLowerCase().includes(input.toLowerCase()));
+    this.setState({employees: filteredName});
 
-    console.log(filteredName);
+
+
+   
   }
 
   render() {
@@ -60,7 +63,8 @@ class Employees extends Component {
                   <th scope="col">Image</th>
                   <th scope="col">
                     <span id="name" onClick={this.handleClick}>
-                      Name
+                      Name <i class="fa fa-caret-down" aria-hidden="true"></i>
+
                     </span>
                   </th>
                   <th scope="col">Phone</th>
